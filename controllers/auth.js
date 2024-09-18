@@ -64,7 +64,7 @@ router.post("/logout", (req, res) => {
     res.clearCookie("token", {
         httpOnly: true,
         sameSite: 'None',  
-        secure: process.env.NODE_ENV === 'production' // ב-production להשתמש ב-Secure
+        secure: process.env.NODE_ENV === 'production' 
     });
     res.status(200).send("User logged out successfully");
 });

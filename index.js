@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser"
 import authRouter from "./controllers/auth.js"
 import jwt from "jsonwebtoken"
 import cors from "cors"
-import fs from "fs"
+
 
 app.use(express.json())
 app.use(cookieParser())
@@ -36,20 +36,6 @@ app.get("/get-user", (req, res) => {
 
 })
 
-
-function catchAll(error, req, res, next) {
-    if (parseInt(error.status) >= 500) {
-        let logMessage =
-            `\n****************************************************************************** 
-server failed, error code: ${error.status} , with message: ${error.message} 
-****************************************************************************** `
-
-        fs.appendFile(process.cwd() + "/utils/log.txt", logMessage, (err) => err && console.error(err))
-        res.send("there has been an error, please try again..")
-    }
-}
-
-app.use(catchAll)
 
 
 app.listen(5000, () => {
