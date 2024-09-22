@@ -6,6 +6,9 @@ import authRouter from "./controllers/auth.js"
 import jwt from "jsonwebtoken"
 import cors from "cors"
 
+
+
+
 app.use(express.json())
 app.use(cookieParser())
 
