@@ -6,9 +6,6 @@ import authRouter from "./controllers/auth.js"
 import jwt from "jsonwebtoken"
 import cors from "cors"
 
-
-
-
 app.use(express.json())
 app.use(cookieParser())
 
@@ -22,9 +19,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.options('*', cors(corsOptions));
 
-
 app.use("/auth", authRouter)
-
 
 app.get("/get-user", (req, res) => {
     const token = req.cookies?.token
@@ -38,7 +33,7 @@ app.get("/get-user", (req, res) => {
 
 })
 
-
-app.listen(5000, () => {
-    console.log("listening on port 5000...")
-})
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}...`);
+});
